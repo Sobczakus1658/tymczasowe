@@ -1,0 +1,13 @@
+<form action="{% url 'program:zlacz_sekcje'%}" method="post">
+    Wybierz plik
+    <br>
+    {% csrf_token %}
+    {% for plik in pliki%}
+    <input type="radio" name="rodzic" id="{{ plik.id }}" value="{{ plik.id }}" multiple>
+    <label for="{{ plik.id }}">{{ plik.nazwa }}</label><br>
+    {% endfor %}
+    Tresc
+    <br>
+    <input name="tresc">
+    <input type="submit" value="Dodaj">
+</form>

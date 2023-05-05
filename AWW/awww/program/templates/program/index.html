@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width">
+	<title>Projekt z AWWW </title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'program/style.css' %}">
+  <link rel="stylesheet" href="{% static 'program/color.css' %}">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://kit.fontawesome.com/f741e76120.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class = "rozwiniecie">
+    <form action="{% url 'program:tworzenie_katalogu' %}" method="post">
+      {% csrf_token %} 
+      <input type="submit" value="Stworz katalog">
+    </form>
+    <form action="{% url 'program:usuwanie_katalogu' %}" method="post">
+      {% csrf_token %} 
+      <input type="submit" value="Usun katalog">
+    </form>
+    <form action="{% url 'program:tworzenie_pliku' %}" method="post">
+      {% csrf_token %} 
+      <input type="submit" value="Stworz plik">
+    </form>
+    <form action="{% url 'program:usuwanie_pliku' %}" method="post">
+      {% csrf_token %} 
+      <input type="submit" value="Usun plik">
+    </form>
+    <form action="{% url 'program:usuwanie_sekcji' %}" method="post">
+      {% csrf_token %} 
+      <input type="submit" value="Usun sekcję">
+    </form>
+    <form action="{% url 'program:laczenie_sekcji' %}" method="post">
+      {% csrf_token %} 
+      <input type="submit" value="Złącz sekcje">
+    </form>
+  </div>
+	<div id="page">
+		<div class="pasek_menu">
+			<button type="button" class="menu" id="plik">plik</button>
+			<button type="button" class="menu">edycja</button>
+			<button type="button" class="menu">opcje</button>
+    </div>
+    
+		<div class="wybor_pliku">
+      {% load static %}
+
+      <ul>
+      {%for wyswietl in opcje%}
+        {{wyswietl| safe}}
+      {%endfor%}
+      </ul>
+       
+      
+  </ul>
+
+		</div>
+		<div class="tekst_programu">
+
+		</div>
+		<aside class="fragment_kodu">
+
+		</aside>
+		<div class="pasek_zakladek">
+			<button type="button" class="trapez">
+				STANDARD
+			</button>
+			<button type="button" class="trapez">
+				OPTYMALIZACJE
+			</button>
+			<button type="button" class="trapez">
+				PROCESOR
+			</button>
+			<button type="button" class="trapez">
+			 ZALEŻNE
+			</button>
+		</div>
+		<div class="dane"></div>
+	</div>
+  <script>
+    $('#plik').click(function () {
+        $('.rozwiniecie').toggleClass("show");
+    });
+</script>
+</body>
+
+</html>

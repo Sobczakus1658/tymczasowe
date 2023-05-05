@@ -1,0 +1,24 @@
+<form action="{% url 'program:stworz_plik'%}" method="post" enctype="multipart/form-data">
+    Wybierz podkatalog
+    <br>
+    {% csrf_token %}
+    {% for katalog in katalogi%}
+    <input type="radio" name="rodzic" id="{{ katalog.id }}" value="{{ katalog.id }}">
+    <label for="{{ katalog.id }}">{{ katalog.nazwa }}</label><br>
+    {% endfor %}
+    <!-- Nazwa
+    <br>
+    <input name="nazwa">
+    <br> -->
+    <!-- Tresc -->
+    <!-- <br> -->
+    <!-- <textarea name ="tresc"></textarea> -->
+
+    <!-- <label for="nazwa">Wybierz plik:</label> -->
+    {% csrf_token %}
+<input type="file"
+    name="nazwa"
+    accept=".c">
+    <!-- tresc = nazwa.open() -->
+    <input type="submit" value="Dodaj">
+</form>
